@@ -1,0 +1,20 @@
+$breakpoints: (
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+);
+
+//* Fonts
+$ff-b: 'Delius', cursive;
+
+//* Style
+$rounded: 15px;
+$spacing-xs: 0.5rem;
+$spacing-sm: 1rem;
+
+:root {
+    --clr-red: #d63031;
+    --clr-orange: #fdcb6e;
+    --clr-orange-2: #e17055;
+}

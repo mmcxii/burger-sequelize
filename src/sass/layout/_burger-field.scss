@@ -1,0 +1,13 @@
+.burger-field {
+    display: grid;
+    grid-template-rows: repeat(3, max-content);
+    grid-template-areas: 'form' 'available' 'eaten';
+    grid-gap: $spacing-sm;
+    justify-content: center;
+
+    @include mq(md) {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: max-content, 1fr;
+        grid-template-areas: 'form form' 'available eaten';
+    }
+}

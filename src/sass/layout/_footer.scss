@@ -1,0 +1,20 @@
+.footer {
+    margin-top: auto;
+    padding-bottom: $spacing-xs;
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        @include mq(md) {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    }
+
+    &__byline {
+        font-weight: bolder;
+    }
+}

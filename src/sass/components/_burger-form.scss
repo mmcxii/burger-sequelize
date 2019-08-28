@@ -1,0 +1,25 @@
+.burger-form {
+    grid-area: form;
+
+    display: grid;
+    grid-template-columns: 1fr max-content;
+    grid-template-areas: 'input button';
+
+    &__input {
+        grid-area: input;
+
+        border: none;
+        border-top-left-radius: $rounded;
+        border-bottom-left-radius: $rounded;
+        padding-left: $spacing-xs;
+        color: var(--clr-red);
+        font-weight: bolder;
+    }
+
+    &__btn {
+        grid-area: button;
+
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+}

@@ -1,0 +1,45 @@
+<section class="burger-field">
+    {{!-- Burger Submission Form --}}
+    <form class="burger-form">
+        <input type="text" name="name" placeholder="Whatcha hungry for?..." id="newBurger" class="burger-form__input">
+        <button type="submit" class="burger-form__btn btn">Add Burger</button>
+    </form>
+
+    {{!-- List of Available Burgers --}}
+    <section class="burger-list available section">
+        <h2 class="section__title">Available Burgers</h2>
+
+        {{#each burgers}}
+
+        {{#unless devoured}}
+        <article class="burger-list__item" id='burger-{{id}}'>
+            <h3 class="burger-list__item__title">
+                {{name}}
+            </h3>
+
+            <button class="burger-list__btn btn" data-burger={{id}}>Eat Da Burger</button>
+
+        </article>
+        {{/unless}}
+
+        {{/each}}
+
+    </section>
+
+    {{!-- List of Consumed Burgers --}}
+    <section class="burger-list eaten section">
+        <h2 class="section__title">Eaten Burgers</h2>
+
+        {{#each burgers}}
+
+        {{#if devoured}}
+        <article class="burger-list__item" id='burger-{{id}}'>
+            <h3 class="burger-list__item__title">
+                {{name}}
+            </h3>
+        </article>
+        {{/if}}
+
+        {{/each}}
+    </section>
+</section>

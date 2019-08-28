@@ -1,0 +1,6 @@
+.section {
+    &__title {
+        padding-bottom: $spacing-xs;
+        border-bottom: 2px var(--clr-red) dotted;
+    }
+}
