@@ -9,7 +9,7 @@ const static = express.static(path.join(path.dirname(require.main.filename), '/p
 
 //* Page Route
 router.get('/', (req, res) => {
-    Burger.findAll({}).then((data) => res.status(200).render('burgerlist', { burgers: data }));
+    Burger.findAll({}).then((data) => res.status(200).render('burgerList', { burgers: data }));
 });
 
 //* API Routes
