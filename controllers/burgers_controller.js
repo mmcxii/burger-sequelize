@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const { selectAllBurgers, insertOneBurger, updateOneBurgerDevoured } = require('../models/burger');
+const { Burger } = require('../models');
 
 const router = express.Router();
 
@@ -8,13 +8,29 @@ const router = express.Router();
 const static = express.static(path.join(path.dirname(require.main.filename), '/public'));
 
 //* Page Route
-router.get('/', (req, res) => selectAllBurgers((data) => res.render('burgerList', { burgers: data })));
+router.get('/', (req, res) => {
+    Burger.findAll({}).then((data) => res.status(200).render('burgerlist', { burgers: data }));
+});
 
 //* API Routes
-router.get('/api/burgers', (req, res) => selectAllBurgers((data) => res.json(data)));
 
-router.post('/api/burgers', (req, res) => insertOneBurger(req.body.name));
+// Get all burgers
+router.get('/api/burgers', (req, res) => {
+    Burger.findAll({}).then((data) => res.status(200).json(data));
+});
 
-router.put('/api/burgers', (req, res) => updateOneBurgerDevoured(req.body.id));
+// Add new burger
+router.post('/api/burgers', ({ body: { name } }, res) => {
+    Burger.create({ name }).then(() => res.sendStatus(204));
+});
+
+// Mark burger as devoured
+router.put('/api/burgers', ({ body: { id } }, res) => {
+    Burger.findOne({
+        where: { id },
+    })
+        .then((data) => data.update({ devoured: 1 }))
+        .then(() => res.sendStatus(204));
+});
 
 module.exports = { router, static };

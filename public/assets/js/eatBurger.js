@@ -12,5 +12,5 @@ availableBurgers.addEventListener('click', (e) => {
         headers: { 'Content-Type': 'application/json' },
         method: 'put',
         body: JSON.stringify(targetBurger),
-    }).then(window.location.reload());
+    }).then(() => window.location.reload(true));
 });

@@ -1,9 +1,20 @@
-const { selectAll, insertOne, updateOne } = require('../config/orm');
-
-const selectAllBurgers = (callback) => selectAll('burgers', (data) => callback(data));
-
-const insertOneBurger = (newBurger) => insertOne('burgers', newBurger);
-
-const updateOneBurgerDevoured = (id) => updateOne('burgers', 'devoured', id, 1);
-
-module.exports = { selectAllBurgers, insertOneBurger, updateOneBurgerDevoured };
+module.exports = (sequelize, DataTypes) =>
+    sequelize.define(
+        'Burger',
+        {
+            id: {
+                type: DataTypes.INTEGER,
+                primaryKey: true,
+                autoIncrement: true,
+            },
+            name: {
+                type: DataTypes.STRING,
+                allowNull: false,
+            },
+            devoured: {
+                type: DataTypes.TINYINT,
+                defaultValue: 0,
+            },
+        },
+        { timestamps: false }
+    );
